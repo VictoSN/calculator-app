@@ -1,5 +1,7 @@
 body{
-    background-color: rgb(226, 226, 226);
+    background: #f0f2f5;
+    background-image: radial-gradient(circle at 1px 1px, #e0e0e0 1px, transparent 0);
+    background-size: 10px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
