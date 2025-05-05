@@ -1,0 +1,105 @@
+body{
+    background-color: rgb(226, 226, 226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#calculator{
+    background-color: #f3f4f6;
+    width: 300px;
+    border-radius: 10px;
+    padding: 20px 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+#resultLabel{
+    font-size: 2em;
+    background-color: rgb(61, 61, 61);
+    color: white;
+    width: auto;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#buttonDiv{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+#buttonDiv button {
+    font-weight: bold;
+    height: 60px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#acButton{
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#acButton, #zeroButton{
+    grid-column: span 2;        /* takes two spaces */
+}
+
+#equalButton{
+    background: rgb(33, 129, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#deleteButton{
+    background: rgb(255, 174, 0);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.operator{
+    background: #4b5563;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.number{
+    background: #d1d5db;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+
+#buttonDiv button.number {
+    font-weight: normal;
+}
+
+#buttonDiv button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    filter: brightness(1.05);
+}
+
+#buttonDiv button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    filter: brightness(0.95);
+}

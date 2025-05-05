@@ -123,11 +123,23 @@ equalButton.addEventListener("click", () => {
     if (firstOperand !== null && operator !== null) {
         const secondOperand = parseFloat(currentInput);
         const result = calculate(firstOperand, secondOperand, operator);
-        currentInput = String(result);  // display result to user
+        currentInput = String(result.toFixed(3));  
+
+        if (currentInput % 1 === 0) {
+            currentInput = String(result.toFixed(0));   // '5.0' to '5'
+        } 
+
         firstOperand = null;            //reset back
         operator = null;
         waitingForSecondOperand = false;
-        updateDisplay();
+        console.log(currentInput);
+        if(isNaN(currentInput)) {
+            currentInput = "Error";
+            updateDisplay();
+            currentInput = "";
+        } else {
+            updateDisplay();
+        }
     }
 });
 
