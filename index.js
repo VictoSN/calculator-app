@@ -38,6 +38,8 @@ function clearAll() {
 }
 
 function inputDigit(digit) {
+    if (currentInput.length > 10) return;
+
     if (waitingForSecondOperand) {    
         currentInput = digit;           // set second operation number
         waitingForSecondOperand = false;
@@ -123,17 +125,23 @@ equalButton.addEventListener("click", () => {
     if (firstOperand !== null && operator !== null) {
         const secondOperand = parseFloat(currentInput);
         const result = calculate(firstOperand, secondOperand, operator);
-        currentInput = String(result.toFixed(3));  
+        currentInput = String(result.toFixed(6));  
 
-        if (currentInput % 1 === 0) {
-            currentInput = String(result.toFixed(0));   // '5.0' to '5'
-        } 
+        if (currentInput.includes('.')) {
+            // replace .0 with empty string
+            currentInput = currentInput.replace(/\.?0+$/, '');
+            
+            // if last '.', then remove it. ex = 123. -> 123
+            if (currentInput.slice(-1) === '.') {
+                currentInput = currentInput.slice(0, -1);
+            }
+        }
 
         firstOperand = null;            //reset back
         operator = null;
         waitingForSecondOperand = false;
         console.log(currentInput);
-        if(isNaN(currentInput)) {
+        if(isNaN(currentInput) || currentInput.length > 15) {
             currentInput = "Error";
             updateDisplay();
             currentInput = "";

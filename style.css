@@ -29,6 +29,9 @@ body{
     display:flex;
     justify-content: flex-end;
     align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #buttonDiv{
@@ -105,23 +108,28 @@ body{
     transform: translateY(0);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     filter: brightness(0.95);
-    transition: all 0.05s ease; /* Faster transition for touch */
+    transition: all 0.08s ease; /* Faster transition for touch */
 }
 
 /* desktop version hover */
-@media (hover: hover) {
+@media (hover: hover) {     /* only allow on hover capable devices*/
     #buttonDiv button:hover {
         transform: translateY(-2px);
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         filter: brightness(1.05);
     }
+
+    #buttonDiv button:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        filter: brightness(0.95);
+    }
 }
 
-/* creates a sticky focus on mobile */
 #buttonDiv button:focus {
-    outline: none;
+    outline: none; /* removes default focus ring */
 }
 
 #buttonDiv button:focus-visible {
-    outline: 2px solid #4361EE;
+    outline: 2px solid #4361EE; /* Keyboard-only focus */
 }
